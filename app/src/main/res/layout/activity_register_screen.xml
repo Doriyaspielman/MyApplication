@@ -33,7 +33,9 @@
         android:text="Sign In"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="ClickOnRegister"/>
+
 
     <EditText
         android:id="@+id/new_UserName"
