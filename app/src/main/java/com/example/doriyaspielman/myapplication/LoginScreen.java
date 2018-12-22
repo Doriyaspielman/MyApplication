@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,7 +18,7 @@ public class LoginScreen extends AppCompatActivity {
     public Button signIn;
     private EditText emailInput;
     private EditText passowrdInput;
-    boolean loginIsOk = false;
+    private boolean loginIsOk = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +26,15 @@ public class LoginScreen extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         emailInput = (EditText)findViewById(R.id.emailInput);
         passowrdInput = (EditText)findViewById(R.id.passwordInput);
+        this.login = findViewById(R.id.loginButton);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickLoginButton();
+            }
+        });
     }
-    public void onClickLoginButton(View view) {
+    public void onClickLoginButton() {
         final String emailInputString = emailInput.getText().toString();
         final String passwordInputString = passowrdInput.getText().toString();
         final DatabaseReference db = FirebaseDatabase.getInstance().getReference();
@@ -39,10 +45,8 @@ public class LoginScreen extends AppCompatActivity {
                     if(dataSnapshot.exists()) {
                         User user;
                         user = dataSnapshot.getValue(User.class);
-                        Log.d("user: "+user.getEmail(),"messege");
-                        Log.d("user pass: "+user.getPassword(),"messege");
-                        Log.d("user_input: "+emailInputString,"messege");
-                        Log.d("user_input_pass: "+passwordInputString,"messege");
+                        Log.d("user pass:"+user.getPassword(),"messege");
+                        Log.d("user_input_pass:"+passwordInputString,"messege");
                         if (passwordInputString.equals(user.getPassword())) {
                             loginIsOk = true;
                         }
@@ -50,20 +54,17 @@ public class LoginScreen extends AppCompatActivity {
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {}
-                }
-             );
+                });
         if(loginIsOk) {
+            Log.d("IF:"+passwordInputString,"messege");
             Intent i = new Intent(this,StoreScreen.class);
             startActivity(i);
         }
     }
 
-
     public void OnClickSignInButton(View v) {
         Intent i = new Intent(this,RegisterScreen.class);
         startActivity(i);
-
-
     }
 }
 

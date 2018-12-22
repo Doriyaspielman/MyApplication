@@ -21,6 +21,7 @@ public class RegisterScreen extends AppCompatActivity {
     private EditText passwordInput;
     private EditText nameInput;
     private Button  signUpBtn;
+    private boolean flag=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +45,8 @@ public class RegisterScreen extends AppCompatActivity {
         final User user = new User(
                 nameInput.getText().toString(),
                 emailInput.getText().toString(),
-                passwordInput.getText().toString());
+                passwordInput.getText().toString(),
+                false);
 
         if ((HasEmptyFields() == false)) {
 
@@ -55,9 +57,10 @@ public class RegisterScreen extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
-                        Toast.makeText(RegisterScreen.this, "User already exists", Toast.LENGTH_LONG).show();//not working
+                            Toast.makeText(RegisterScreen.this, "E-mail already exists", Toast.LENGTH_LONG).show();
 
                     } else {
+                        flag=true;
                         db.child("Users").child(user.getEmail().replace(".", "|")).setValue(user);
                         Toast.makeText(RegisterScreen.this, "Registration done. please login", Toast.LENGTH_LONG).show();
                     }
@@ -69,9 +72,10 @@ public class RegisterScreen extends AppCompatActivity {
                 }
             });
 
-
-            Intent i = new Intent(this, LoginScreen.class);
-            startActivity(i);
+            if(flag) {
+                Intent i = new Intent(this, LoginScreen.class);
+                startActivity(i);
+            }
         }
     }
         private boolean HasEmptyFields(){

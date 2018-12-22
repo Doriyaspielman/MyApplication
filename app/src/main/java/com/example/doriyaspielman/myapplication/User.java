@@ -5,11 +5,17 @@ public class User {
     private String user_name;
     private String email;
     private String password;
+    private boolean maneger;
 
-    public User(String user_name, String email, String password) {
+    public User(){
+
+    }
+
+    public User(String user_name, String email, String password, boolean maneger) {
         this.user_name = user_name;
         this.email = email;
         this.password = password;
+        this.maneger = maneger;
     }
 
     public String getUser_name() {
@@ -34,5 +40,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isManeger() {
+        return maneger;
+    }
+
+    public void setManeger(boolean maneger) {
+        this.maneger = maneger;
     }
 }
