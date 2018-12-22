@@ -38,31 +38,36 @@ public class LoginScreen extends AppCompatActivity {
         final String emailInputString = emailInput.getText().toString();
         final String passwordInputString = passowrdInput.getText().toString();
         final DatabaseReference db = FirebaseDatabase.getInstance().getReference();
-
+        if (emailInputString.equals("doriya@gmail.com") || emailInputString.equals("noyt@gmail.com")) {//if manager
+            Intent i = new Intent(this, StoreScreenManager.class);
+            startActivity(i);
+        } else {
             db.child("Users").child(emailInputString.replace(".", "|").toLowerCase()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    if(dataSnapshot.exists()) {
+                    if (dataSnapshot.exists()) {
                         User user;
                         user = dataSnapshot.getValue(User.class);
-                        Log.d("user pass:"+user.getPassword(),"messege");
-                        Log.d("user_input_pass:"+passwordInputString,"messege");
+                        Log.d("user pass:" + user.getPassword(), "messege");
+                        Log.d("user_input_pass:" + passwordInputString, "messege");
                         if (passwordInputString.equals(user.getPassword())) {
                             loginIsOk = true;
                         }
                     }
                 }
+
                 @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {}
-                });
-        if(loginIsOk) {
-            Log.d("IF:"+passwordInputString,"messege");
-            Intent i = new Intent(this,StoreScreen.class);
-            startActivity(i);
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+            if (loginIsOk) {//if user exists
+                Intent i = new Intent(this, StoreScreen.class);
+                startActivity(i);
+            }
         }
     }
 
-    public void OnClickSignInButton(View v) {
+    public void OnClickSignInButton(View v) {//new user,need to sintup
         Intent i = new Intent(this,RegisterScreen.class);
         startActivity(i);
     }
