@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,6 +9,19 @@
         android:id="@+id/Relative_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/product_name"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="-55dp"
+            android:layout_marginTop="118dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            app:backgroundTint="@color/common_google_signin_btn_text_dark_pressed"
+            app:srcCompat="@drawable/plus" />
 
         <ImageView
             android:id="@+id/product_pic1"
@@ -38,5 +52,19 @@
             android:layout_marginTop="59dp"
             android:layout_marginEnd="187dp"
             android:text="TextView" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/minus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/product_pic1"
+            android:layout_alignEnd="@+id/product_pic1"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="63dp"
+            android:clickable="true"
+            app:backgroundTint="@color/common_google_signin_btn_text_dark_pressed"
+            app:srcCompat="@drawable/minos" />
+
     </RelativeLayout>
+
 </LinearLayout>

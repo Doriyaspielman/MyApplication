@@ -55,7 +55,6 @@ public class LoginScreen extends AppCompatActivity {
                         }
                         else{
                             Toast.makeText(LoginScreen.this, "Wrong password,try again!", Toast.LENGTH_LONG).show();
-
                         }
                     }
                 }
