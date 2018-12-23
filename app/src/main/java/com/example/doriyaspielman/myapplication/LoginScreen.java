@@ -1,12 +1,14 @@
 package com.example.doriyaspielman.myapplication;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -48,10 +50,12 @@ public class LoginScreen extends AppCompatActivity {
                     if (dataSnapshot.exists()) {
                         User user;
                         user = dataSnapshot.getValue(User.class);
-                        Log.d("user pass:" + user.getPassword(), "messege");
-                        Log.d("user_input_pass:" + passwordInputString, "messege");
                         if (passwordInputString.equals(user.getPassword())) {
                             loginIsOk = true;
+                        }
+                        else{
+                            Toast.makeText(LoginScreen.this, "Wrong password,try again!", Toast.LENGTH_LONG).show();
+
                         }
                     }
                 }
@@ -72,5 +76,4 @@ public class LoginScreen extends AppCompatActivity {
         startActivity(i);
     }
 }
-
 
