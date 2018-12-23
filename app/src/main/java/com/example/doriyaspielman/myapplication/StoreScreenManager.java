@@ -9,4 +9,6 @@ public class StoreScreenManager extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__store_manager);
     }
+
+
 }
