@@ -4,4 +4,42 @@
     <string name="name">Name</string>
     <string name="e_mail">E-mail</string>
     <string name="password">Password</string>
+
+    <!--pictures -->
+    <array name= "pictures">
+        <item>@drawable/red_adidas</item>
+        <!--<item>@drawable/black_shoes</item>-->
+        <!--<item>@drawable/black_coat</item>-->
+        <!--<item>@drawable/casual_dress</item>-->
+        <!--<item>@drawable/evening_dress</item>-->
+        <!--<item>@drawable/pink_shirt</item>-->
+        <!--<item>@drawable/white_shirt</item>-->
+        <!--<item>@drawable/wedding_dress</item>-->
+    </array>
+
+    <!--Names of products-->
+    <string-array name= "productName">
+        <item>red_adidas</item>
+        <!--<item>black_shoes</item>-->
+        <!--<item>black_coat</item>-->
+        <!--<item>casual_dress</item>-->
+        <!--<item>evening_dress</item>-->
+        <!--<item>pink_shirt</item>-->
+        <!--<item>white_shirt</item>-->
+        <!--<item>wedding_dress</item>-->
+    </string-array>
+
+    <!--price-->
+    <string-array name = "price">
+        <item>140</item>
+        <item>120</item>
+        <item>150</item>
+        <item>90</item>
+        <item>170</item>
+        <item>100</item>
+        <item>80</item>
+        <item>300</item>
+    </string-array>
 </resources>
+
+
