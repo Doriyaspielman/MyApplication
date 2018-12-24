@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/StringRemoveProduct"
+        android:layout_width="198dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="163dp"
+        android:layout_marginBottom="451dp"
+        android:text="@string/remove_product"
+        android:textAlignment="center"
+        android:textColor="#008080"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/idToRemove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="107dp"
+        android:layout_marginEnd="94dp"
+        android:layout_marginBottom="278dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/id_product"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/StringRemoveProduct"
+        android:autofillHints="" />
+
+    <ImageButton
+        android:id="@+id/RemoveProduct"
+        style="@android:style/Widget.ImageButton"
+        android:layout_width="61dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="183dp"
+        android:layout_marginEnd="159dp"
+        android:layout_marginBottom="36dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idToRemove"
+        android:onClick="ClickOnRemoveProduct"
+        app:srcCompat="@android:drawable/ic_delete"
+        android:contentDescription="TODO" />
+</android.support.constraint.ConstraintLayout>
