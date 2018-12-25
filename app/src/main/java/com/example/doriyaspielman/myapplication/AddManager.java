@@ -27,8 +27,7 @@ public class AddManager extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity__store_manager);
-
+        setContentView(R.layout.activity_add_manager);
         this.idInput = (EditText) findViewById(R.id.idInput);
         this.nameInput = (EditText) findViewById(R.id.nameInput);
         this.priceInput = (EditText) findViewById(R.id.priceInput);
@@ -53,10 +52,9 @@ public class AddManager extends AppCompatActivity {
 
 
         if ((HasEmptyFields() == false)) {
-
             Toast.makeText(AddManager.this, "There is empty field,try again!", Toast.LENGTH_LONG).show();
-        } else {
-
+        }
+        else {
             products.child("Products").child(product.getId().toLowerCase()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
