@@ -1,12 +1,14 @@
 package com.example.doriyaspielman.myapplication;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -21,9 +23,8 @@ public class AddManager extends AppCompatActivity {
     private EditText priceInput;
     private EditText quantityInput;
     private EditText pic_idInput;
-    private Button AddProductBtn;
+    private ImageButton AddProductBtn;
     private boolean flag=false;
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,7 @@ public class AddManager extends AppCompatActivity {
         this.priceInput = (EditText) findViewById(R.id.priceInput);
         this.quantityInput = (EditText) findViewById(R.id.quantityInput);
         this.pic_idInput = (EditText) findViewById(R.id.pic_idInput);
+        this.AddProductBtn = (ImageButton) findViewById(R.id.addProduct);
 
         AddProductBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,12 +52,11 @@ public class AddManager extends AppCompatActivity {
                 quantityInput.getText().toString(),
                 pic_idInput.getText().toString());
 
-
         if ((HasEmptyFields() == false)) {
             Toast.makeText(AddManager.this, "There is empty field,try again!", Toast.LENGTH_LONG).show();
         }
         else {
-            products.child("Products").child(product.getId().toLowerCase()).addListenerForSingleValueEvent(new ValueEventListener() {
+            products.child("products").child(product.getId().toLowerCase()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
@@ -63,8 +64,9 @@ public class AddManager extends AppCompatActivity {
 
                     } else {
                         flag=true;
-                        products.child("Product").child(product.getName()).setValue(product);
-                        Toast.makeText(AddManager.this, "Product added!", Toast.LENGTH_LONG).show();
+                        products.child("products").child(product.getName()).setValue(product);
+                        Toast.makeText(AddManager.this, "Product added! ", Toast.LENGTH_LONG).show();
+
                     }
                 }
 
