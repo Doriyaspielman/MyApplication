@@ -44,6 +44,11 @@ public class AddManager extends AppCompatActivity {
         });
     }
 
+    public void goBack(){
+        Intent i = new Intent(this, StoreScreenManager.class);
+        startActivity(i);
+    }
+
     public void ClickOnAddProduct() {
         final DatabaseReference products= FirebaseDatabase.getInstance().getReference();
         final Product product = new Product(idInput.getText().toString(),
@@ -66,13 +71,12 @@ public class AddManager extends AppCompatActivity {
                         flag=true;
                         products.child("products").child(product.getName()).setValue(product);
                         Toast.makeText(AddManager.this, "Product added! ", Toast.LENGTH_LONG).show();
-                        /// go back to storeScreenManager
+                        goBack();
                     }
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-
                 }
             });
 
