@@ -66,7 +66,7 @@ public class AddManager extends AppCompatActivity {
                         flag=true;
                         products.child("products").child(product.getName()).setValue(product);
                         Toast.makeText(AddManager.this, "Product added! ", Toast.LENGTH_LONG).show();
-
+                        /// go back to storeScreenManager
                     }
                 }
 
