@@ -11,4 +11,8 @@ public class RemoveManager extends AppCompatActivity {
         setContentView(R.layout.activity_remove_manager);
 
     }
+
+    public void ClickOnRemoveProduct() {
+        
+    }
 }

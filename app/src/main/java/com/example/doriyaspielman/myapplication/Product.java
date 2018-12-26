@@ -95,6 +95,8 @@ public class Product implements Serializable {
         this.selectes = selectes;
     }
 
+
+
     @Override
     public String toString() {
         return "Product{" +

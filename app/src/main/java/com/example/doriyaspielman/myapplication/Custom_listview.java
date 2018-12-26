@@ -36,7 +36,7 @@ public class Custom_listview extends ArrayAdapter<Product> {
             viewHolder=new ViewHolder(r);
             r.setTag(viewHolder);
             viewHolder.checkBox=r.findViewById(R.id.checkBox);
-            //    viewHolder.checkBox.setOnCheckedChangeListener((StoreScreen)context);  /////check function on youtube
+            viewHolder.checkBox.setOnCheckedChangeListener((StoreScreen)context);
         }
         else{
             viewHolder=(ViewHolder) r.getTag();
