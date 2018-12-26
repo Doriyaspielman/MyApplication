@@ -37,6 +37,27 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-    </application>
 
+        <activity android:name=".AddManager">
+            <intent-filter>
+                <action android:name="com.example.doriyaspielman.myapplication.add_manager" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".RemoveManager">
+            <intent-filter>
+                <action android:name="com.example.doriyaspielman.myapplication.remove_manager" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".confirm">
+            <intent-filter>
+                <action android:name="com.example.doriyaspielman.myapplication.confirm" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+    </application>
 </manifest>

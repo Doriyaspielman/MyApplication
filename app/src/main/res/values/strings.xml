@@ -4,6 +4,18 @@
     <string name="name">Name</string>
     <string name="e_mail">E-mail</string>
     <string name="password">Password</string>
+    <string name="product_id">product ID</string>
+    <string name="product_name">product Name</string>
+    <string name="quantity">quantity</string>
+    <string name="price">Price</string>
+    <string name="add_product">Add Product:</string>
+    <string name="pic_id">pic id</string>
+    <string name="remove_product">Remove Product:</string>
+    <string name="id_product">ID product</string>
+    <string name="pay">Pay !</string>
+    <string name="thank_you">Thank you!</string>
+    <string name="your_order_is_on_the_way">your order is on the way :)</string>
+    <string name="todo">TODO</string>
 
     <!--pictures -->
     <array name= "pictures">

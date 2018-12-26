@@ -39,6 +39,10 @@ public class RegisterScreen extends AppCompatActivity {
         });
     }
 
+    public void goBackToLogIn(){
+        Intent i = new Intent(this, LoginScreen.class);
+        startActivity(i);
+    }
     public void ClickOnRegister() {
 
         final DatabaseReference db = FirebaseDatabase.getInstance().getReference();
@@ -63,6 +67,7 @@ public class RegisterScreen extends AppCompatActivity {
                         flag=true;
                         db.child("Users").child(user.getEmail().replace(".", "|")).setValue(user);
                         Toast.makeText(RegisterScreen.this, "Registration done. please login", Toast.LENGTH_LONG).show();
+                        goBackToLogIn();
                     }
                 }
 

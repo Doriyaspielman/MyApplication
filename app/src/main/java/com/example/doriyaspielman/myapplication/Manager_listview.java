@@ -17,8 +17,6 @@ public class Manager_listview extends ArrayAdapter<String>{
         private String[] price;
         private Integer[] pic_id;
         private Activity context;
-        private Button plus;
-        private Button minus;
 
 
     public Manager_listview(Activity context, String[] productName, String[] price, Integer[] pic_id) {
@@ -39,8 +37,7 @@ public class Manager_listview extends ArrayAdapter<String>{
                 LayoutInflater layoutInflater=context.getLayoutInflater();
                 r=layoutInflater.inflate(R.layout.listview_manager_layout,null,true);
                 viewHolder=new ViewHolder(r);
-                viewHolder.b1 = (Button) r.findViewById(R.id.plus);
-                viewHolder.b2 = (Button) r.findViewById(R.id.minus);
+
                 r.setTag(viewHolder);
 
             }
@@ -57,14 +54,11 @@ public class Manager_listview extends ArrayAdapter<String>{
             TextView tvw1;
             TextView tvw2;
             ImageView ivw;
-            Button b1,b2;
 
             ViewHolder(View v){
                 tvw1=(TextView) v.findViewById(R.id.product_name2);
                 tvw2=(TextView) v.findViewById(R.id.product_price2);
                 ivw=(ImageView) v.findViewById(R.id.product_pic2);
-                b1=(Button) v.findViewById(R.id.plus);
-                b2=(Button) v.findViewById(R.id.minus);
             }
         }
 

@@ -3,34 +3,34 @@ package com.example.doriyaspielman.myapplication;
 import java.io.Serializable;
 
 public class Product implements Serializable {
-    private int id;
+    private String id;
     private String name;
-    private int price;
+    private String price;
     private String description;
-    private int quantity;
+    private String quantity;
     private int pic_id;
-    private int rating;
+    private String rating;
+    private boolean selectes= false;
+
 
     public Product(){
 
     }
 
-    public Product(int id, String name, int price, String description, int quantity, int pic_id, int rating) {
+    public Product(String id, String name, String price, String quantity, int pic_id) {
         this.id = id;
         this.name = name;
         this.price = price;
-        this.description = description;
         this.quantity = quantity;
         this.pic_id = pic_id;
-        this.rating = rating;
     }
 
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -42,11 +42,11 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
@@ -58,11 +58,11 @@ public class Product implements Serializable {
         this.description = description;
     }
 
-    public int getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 
@@ -74,12 +74,20 @@ public class Product implements Serializable {
         this.pic_id = pic_id;
     }
 
-    public int getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(String rating) {
         this.rating = rating;
+    }
+
+    public boolean isSelectes() {
+        return selectes;
+    }
+
+    public void setSelectes(boolean selectes) {
+        this.selectes = selectes;
     }
 
     @Override
