@@ -55,7 +55,7 @@ public class AddManager extends AppCompatActivity {
                 nameInput.getText().toString(),
                 priceInput.getText().toString(),
                 quantityInput.getText().toString(),
-                pic_idInput.getText().toString());
+                Integer.parseInt(pic_idInput.getText().toString()));
 
         if ((HasEmptyFields() == false)) {
             Toast.makeText(AddManager.this, "There is empty field,try again!", Toast.LENGTH_LONG).show();
@@ -69,6 +69,7 @@ public class AddManager extends AppCompatActivity {
 
                     } else {
                         flag=true;
+                        //StoreScreen.arr_p.add(product);
                         products.child("products").child(product.getName()).setValue(product);
                         Toast.makeText(AddManager.this, "Product added! ", Toast.LENGTH_LONG).show();
                         goBack();

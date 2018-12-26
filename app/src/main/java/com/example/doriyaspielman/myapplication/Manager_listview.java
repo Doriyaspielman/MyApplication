@@ -11,21 +11,18 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Manager_listview extends ArrayAdapter<String>{
+import java.util.List;
 
-        private  String[] productName;
-        private String[] price;
-        private Integer[] pic_id;
-        private Activity context;
+public class Manager_listview extends ArrayAdapter<Product>{
+
+    private Activity context;
+    private List<Product> arr_p;
 
 
-    public Manager_listview(Activity context, String[] productName, String[] price, Integer[] pic_id) {
-            super(context, R.layout.listview_manager_layout,productName);
-
+    public Manager_listview(Activity context, List<Product> arr_p) {
+            super(context, R.layout.listview_manager_layout,arr_p);
             this.context=context;
-            this.productName=productName;
-            this.price=price;
-            this.pic_id=pic_id;
+            this.arr_p = arr_p;
         }
 
         @NonNull
@@ -44,9 +41,9 @@ public class Manager_listview extends ArrayAdapter<String>{
             else{
                 viewHolder=(ViewHolder) r.getTag();
             }
-            viewHolder.ivw.setImageResource(pic_id[position]);
-            viewHolder.tvw1.setText(productName[position]);
-            viewHolder.tvw2.setText(price[position]);
+            viewHolder.ivw.setImageResource(arr_p.get(position).getPicture());
+            viewHolder.tvw1.setText(arr_p.get(position).getName());
+            viewHolder.tvw2.setText(arr_p.get(position).getPrice());
             return r;
         }
 
@@ -61,5 +58,4 @@ public class Manager_listview extends ArrayAdapter<String>{
                 ivw=(ImageView) v.findViewById(R.id.product_pic2);
             }
         }
-
 }
