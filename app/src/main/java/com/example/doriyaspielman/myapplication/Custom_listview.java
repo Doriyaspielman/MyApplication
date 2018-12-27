@@ -1,6 +1,7 @@
 package com.example.doriyaspielman.myapplication;
 
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -21,11 +22,8 @@ public class Custom_listview extends ArrayAdapter<Product> {
     private Product p;
     public Custom_listview(Activity context, List<Product> lp) {
         super(context, R.layout.listview_layout,lp);
-
         this.context=context;
-
         this.lp=lp;
-
     }
 
     @NonNull
@@ -39,13 +37,13 @@ public class Custom_listview extends ArrayAdapter<Product> {
             viewHolder=new ViewHolder(r);
             r.setTag(viewHolder);
             viewHolder.checkBox=r.findViewById(R.id.checkBox);
-            viewHolder.checkBox.setOnCheckedChangeListener((StoreScreen)context);  /////check function on youtube
+            viewHolder.checkBox.setOnCheckedChangeListener((StoreScreen)context);
         }
         else{
             viewHolder=(ViewHolder) r.getTag();
         }
         p = lp.get(position);
-        viewHolder.ivw.setImageResource(lp.get(position).getPicture());
+        viewHolder.ivw.setImageDrawable(Drawable.createFromPath(lp.get(position).getPicture()));
         viewHolder.tvw1.setText(lp.get(position).getName());
         viewHolder.tvw2.setText(lp.get(position).getPrice());
         viewHolder.checkBox.setChecked(p.isSelectes());
@@ -63,7 +61,7 @@ public class Custom_listview extends ArrayAdapter<Product> {
         }
     }
 
-      class ViewHolder{
+    class ViewHolder{
         TextView tvw1;
         TextView tvw2;
         ImageView ivw;

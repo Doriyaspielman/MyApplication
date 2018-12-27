@@ -26,17 +26,18 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/idToRemove2"
+        android:id="@+id/idToRemove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="93dp"
-        android:layout_marginTop="97dp"
-        android:layout_marginEnd="76dp"
-        android:layout_marginBottom="191dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="107dp"
+        android:layout_marginEnd="94dp"
+        android:layout_marginBottom="278dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Product id"
+        android:hint="ID product"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/RemoveProduct"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/StringRemoveProduct" />

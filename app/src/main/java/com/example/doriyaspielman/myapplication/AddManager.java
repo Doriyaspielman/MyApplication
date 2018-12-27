@@ -53,20 +53,20 @@ public class AddManager extends AppCompatActivity {
                 nameInput.getText().toString(),
                 priceInput.getText().toString(),
                 quantityInput.getText().toString(),
-                Integer.parseInt(String.valueOf(pic_idInput.getText())));
+                pic_idInput.getText().toString());
 
         if ((HasEmptyFields() == false)) {
             Toast.makeText(AddManager.this, "There is empty field,try again!", Toast.LENGTH_LONG).show();
         }
         else {
-            products.child("products").child(product.getId().toLowerCase()).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
+            products.child("products").child(product.getId().toLowerCase()).addListenerForSingleValueEvent(new ValueEventListener() {                @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
                         Toast.makeText(AddManager.this, "Product already exists", Toast.LENGTH_LONG).show();
 
                     } else {
                         flag=true;
+                        //StoreScreen.arr_p.add(product);
                         products.child("products").child(product.getName()).setValue(product);
                         Toast.makeText(AddManager.this, "Product added! ", Toast.LENGTH_LONG).show();
                         goBack();

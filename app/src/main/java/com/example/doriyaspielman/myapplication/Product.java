@@ -8,7 +8,7 @@ public class Product implements Serializable {
     private String price;
     private String description;
     private String quantity;
-    private int pic_id;
+    private String pic_id;
     private String rating;
     private boolean selectes= false;
 
@@ -17,11 +17,17 @@ public class Product implements Serializable {
 
     }
 
-    public Product(String id, String name, String price, String quantity, int pic_id) {
-        this.id = id;
+    public Product(String id, String name, String price, String quantity, String pic_id) {
+        this.id=id;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
+        this.pic_id = pic_id;
+    }
+
+    public Product(String name,String price,String pic_id){
+        this.name = name;
+        this.price = price;
         this.pic_id = pic_id;
     }
 
@@ -66,11 +72,11 @@ public class Product implements Serializable {
         this.quantity = quantity;
     }
 
-    public int getPicture() {
+    public String getPicture() {
         return pic_id;
     }
 
-    public void setPicture(int pic_id) {
+    public void setPicture(String pic_id) {
         this.pic_id = pic_id;
     }
 
@@ -90,6 +96,8 @@ public class Product implements Serializable {
         this.selectes = selectes;
     }
 
+
+
     @Override
     public String toString() {
         return "Product{" +
@@ -103,5 +111,3 @@ public class Product implements Serializable {
                 '}';
     }
 }
-
-

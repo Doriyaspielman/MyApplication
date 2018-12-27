@@ -45,7 +45,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".RemoveManager">
+      <activity android:name=".RemoveManager">
             <intent-filter>
                 <action android:name="com.example.doriyaspielman.myapplication.remove_manager" />
                 <category android:name="android.intent.category.DEFAULT" />
