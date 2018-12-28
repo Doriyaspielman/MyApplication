@@ -40,10 +40,14 @@ public class LoginScreen extends AppCompatActivity {
         final String emailInputString = emailInput.getText().toString();
         final String passwordInputString = passowrdInput.getText().toString();
         final DatabaseReference db = FirebaseDatabase.getInstance().getReference();
-        if (emailInputString.equals("doriya@gmail.com") || emailInputString.equals("noyt@gmail.com")) {//if manager
+        if( (emailInputString.equals("doriya@gmail.com") || emailInputString.equals("noyt@gmail.com")) && passwordInputString.equals("1234")) {//if manager
             Intent i = new Intent(this, StoreScreenManager.class);
             startActivity(i);
-        } else {
+        }
+        else if((emailInputString.equals("doriya@gmail.com") || emailInputString.equals("noyt@gmail.com")) && !passwordInputString.equals("1234")){
+            Toast.makeText(LoginScreen.this, "Wrong password,try again!", Toast.LENGTH_LONG).show();
+        }
+        else {
             db.child("Users").child(emailInputString.replace(".", "|").toLowerCase()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

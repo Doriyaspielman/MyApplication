@@ -1,5 +1,6 @@
 package com.example.doriyaspielman.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -35,6 +36,12 @@ public class RemoveManager extends AppCompatActivity {
 
     }
 
+
+    public void goBack(){
+        Intent i = new Intent(this, StoreScreenManager.class);
+        startActivity(i);
+    }
+
     public void ClickOnRemoveProduct( String name) {
         name = nameInput.getText().toString();
         final DatabaseReference products= FirebaseDatabase.getInstance().getReference("products").child(name);
@@ -47,6 +54,7 @@ public class RemoveManager extends AppCompatActivity {
             else{
                     products.removeValue();
                     Toast.makeText(RemoveManager.this,  " deleted!", Toast.LENGTH_LONG).show();
+                    goBack();
                 }
             }
                 @Override
