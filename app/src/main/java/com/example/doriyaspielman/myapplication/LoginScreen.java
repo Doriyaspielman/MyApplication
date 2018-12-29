@@ -44,7 +44,7 @@ public class LoginScreen extends AppCompatActivity {
             Intent i = new Intent(this, StoreScreenManager.class);
             startActivity(i);
         }
-        else if((emailInputString.equals("doriya@gmail.com") || emailInputString.equals("noyt@gmail.com")) && !passwordInputString.equals("1234")){
+        else if((emailInputString.toLowerCase().equals("doriya@gmail.com") || emailInputString.toLowerCase().equals("noyt@gmail.com")) && !passwordInputString.equals("1234")){
             Toast.makeText(LoginScreen.this, "Wrong password,try again!", Toast.LENGTH_LONG).show();
         }
         else {

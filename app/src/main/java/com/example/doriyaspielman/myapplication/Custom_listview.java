@@ -1,7 +1,6 @@
 package com.example.doriyaspielman.myapplication;
 
 import android.app.Activity;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -12,18 +11,21 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class Custom_listview extends ArrayAdapter<Product> {
 
 
-    private List<Product> lp;
+    private List<Product> arr_p2;
     private Activity context;
     private Product p;
-    public Custom_listview(Activity context, List<Product> lp) {
-        super(context, R.layout.listview_layout,lp);
+    public Custom_listview(Activity context, List<Product> arr_p2) {
+        super(context, R.layout.listview_layout,arr_p2);
         this.context=context;
-        this.lp=lp;
+        this.arr_p2 = arr_p2;
+
     }
 
     @NonNull
@@ -42,10 +44,10 @@ public class Custom_listview extends ArrayAdapter<Product> {
         else{
             viewHolder=(ViewHolder) r.getTag();
         }
-        p = lp.get(position);
-        viewHolder.ivw.setImageDrawable(Drawable.createFromPath(lp.get(position).getPicture()));
-        viewHolder.tvw1.setText(lp.get(position).getName());
-        viewHolder.tvw2.setText(lp.get(position).getPrice());
+        p = arr_p2.get(position);
+        Picasso.get().load(arr_p2.get(position).getPicture()).into(viewHolder.ivw);
+        viewHolder.tvw1.setText(arr_p2.get(position).getName());
+        viewHolder.tvw2.setText(arr_p2.get(position).getPrice());
         viewHolder.checkBox.setChecked(p.isSelectes());
         viewHolder.checkBox.setTag(p);
         return r;

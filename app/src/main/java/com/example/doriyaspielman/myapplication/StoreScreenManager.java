@@ -22,25 +22,10 @@ public class StoreScreenManager extends AppCompatActivity {
     private EditText product_id;
     private DatabaseReference db;
 
-//    private void displayProductList(){
-//        StoreScreen.arr_p.add(new Product("001","red shoes","140","2",R.drawable.red_adidas));
-//        StoreScreen.arr_p.add(new Product("002","black shoes","120","2",R.drawable.black_shoes));
-//        StoreScreen.arr_p.add(new Product("003","black coat","150","2",R.drawable.black_coat));
-//        StoreScreen.arr_p.add(new Product("004","casual dress","150","2",R.drawable.casual_dress));
-//        StoreScreen.arr_p.add(new Product("005","evening dress","170","2",R.drawable.evening_dress));
-//        StoreScreen.arr_p.add(new Product("006","pink shirt","100","2",R.drawable.pink_shirt));
-//        StoreScreen.arr_p.add(new Product("007","white shirt","80","2",R.drawable.white_shirt));
-//        StoreScreen.arr_p.add(new Product("008","wedding dress","300","2",R.drawable.wedding_dress));
-//    }
-//    String[] productName = {"red shoes", "black shoes", "black coat", "casual dress", "evening dress", "pink shirt", "white shirt", "wedding dress"};
-//    String[] price = {"140", "120", "150", "90" , "170", "100", "80", "300"};
-//    Integer[] pic_id={R.drawable.red_adidas, R.drawable.black_shoes, R.drawable.black_coat, R.drawable.casual_dress, R.drawable.evening_dress, R.drawable.pink_shirt, R.drawable.white_shirt,R.drawable.wedding_dress };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__store_manager);
-        Log.d("BLA", "BLA");
 
         db = FirebaseDatabase.getInstance().getReference();
         final ArrayList<Product> arr_p = new ArrayList();
@@ -65,11 +50,7 @@ public class StoreScreenManager extends AppCompatActivity {
                     Product product = userSnapshot.getValue(Product.class);
                     Log.d(product.getName(), "BLA3");
                     arr_p.add(new Product(product.getName(),product.getPrice(),product.getPicture()));
-                    //arr_p.add(product);
-                    Log.d(product.getPicture(), "BLA4");
-                    int id=R.drawable.black_coat;
-                    Log.d((" ID: "+id), "BLA4");
-
+                    Log.d(product.getPicture(), "BLA2");
 
                     manager_listview.notifyDataSetChanged();
                 }

@@ -3,13 +3,14 @@ package com.example.doriyaspielman.myapplication;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -41,8 +42,7 @@ public class Manager_listview extends ArrayAdapter<Product>{
             else{
                 viewHolder=(ViewHolder) r.getTag();
             }
-            Log.d(arr_p.get(position).getPicture(),"PIC");
-           // viewHolder.ivw.setImageResource(Integer.parseInt(arr_p.get(position).getPicture()));
+            Picasso.get().load(arr_p.get(position).getPicture()).into(viewHolder.ivw);
             viewHolder.tvw1.setText(arr_p.get(position).getName());
             viewHolder.tvw2.setText(arr_p.get(position).getPrice());
             return r;
