@@ -38,30 +38,38 @@ public class StoreScreenManager extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final ArrayList<Product> arr_p = new ArrayList();
         super.onCreate(savedInstanceState);
-        db = FirebaseDatabase.getInstance().getReference();
         setContentView(R.layout.activity__store_manager);
+        Log.d("BLA", "BLA");
+
+        db = FirebaseDatabase.getInstance().getReference();
+        final ArrayList<Product> arr_p = new ArrayList();
+
         lst = (ListView) findViewById(R.id.listviewmanager);
         final Manager_listview manager_listview = new Manager_listview(this, arr_p);
-        db.child("products").addChildEventListener(new ChildEventListener() {
+        lst.setAdapter(manager_listview);
+        db.addChildEventListener(new ChildEventListener() {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                Log.d("", "BLA1");
 
-                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                    Log.d("", "BLA2");
-
-                    Product product = userSnapshot.getValue(Product.class);
-                    Log.d(product.getName(), "BLA");
-                    arr_p.add(new Product(product.getName(),product.getPrice(),product.getPicture()));
-                    manager_listview.notifyDataSetChanged();
-                }
             }
 
             @Override
             public void onChildAdded (@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                Log.d(db.toString(), "BLA1");
+
+                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                    Log.d("BLA", "BLA2");
+
+                    Product product = userSnapshot.getValue(Product.class);
+                    Log.d(product.getName(), "BLA3");
+                    arr_p.add(new Product(product.getName(),product.getPrice(),product.getPicture()));
+                    Log.d(product.getPicture(), "BLA4");
+
+
+                    manager_listview.notifyDataSetChanged();
+                }
 
             }
 
@@ -81,7 +89,6 @@ public class StoreScreenManager extends AppCompatActivity {
             }
 
         });
-        lst.setAdapter(manager_listview);
     }
     public void OnClickPlus (View v){
         Intent i = new Intent(this, AddManager.class);

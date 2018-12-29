@@ -3,6 +3,7 @@ package com.example.doriyaspielman.myapplication;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,8 @@ public class Manager_listview extends ArrayAdapter<Product>{
             else{
                 viewHolder=(ViewHolder) r.getTag();
             }
-            viewHolder.ivw.setImageResource(Integer.parseInt(arr_p.get(position).getPicture()));
+            Log.d(arr_p.get(position).getPicture(),"PIC");
+           // viewHolder.ivw.setImageResource(Integer.parseInt(arr_p.get(position).getPicture()));
             viewHolder.tvw1.setText(arr_p.get(position).getName());
             viewHolder.tvw2.setText(arr_p.get(position).getPrice());
             return r;
