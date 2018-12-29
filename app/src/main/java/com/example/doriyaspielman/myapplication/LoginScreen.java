@@ -79,4 +79,3 @@ public class LoginScreen extends AppCompatActivity {
         startActivity(i);
     }
 }
-

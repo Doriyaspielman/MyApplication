@@ -17,14 +17,14 @@ import com.google.firebase.database.ValueEventListener;
 
 
 public class RemoveManager extends AppCompatActivity {
-     private ImageButton deletBtn;
+    private ImageButton deletBtn;
     private EditText nameInput;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_remove_manager);
         this.deletBtn=(ImageButton) findViewById(R.id.RemoveProduct);
-        this.nameInput = (EditText) findViewById(R.id.idToRemove2);
+        this.nameInput = (EditText) findViewById(R.id.idToRemove);
 
         deletBtn.setOnClickListener(new View.OnClickListener() {
             final String name = nameInput.getText().toString();
@@ -49,19 +49,20 @@ public class RemoveManager extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(!dataSnapshot.exists()) {
-                    Toast.makeText(RemoveManager.this,  " doesn't exists", Toast.LENGTH_LONG).show();
-            }
-            else{
+                    Toast.makeText(RemoveManager.this,  " doesn't exists", Toast.LENGTH_LONG).show();//how to write the name of the product
+                }
+                else{
                     products.removeValue();
                     Toast.makeText(RemoveManager.this,  " deleted!", Toast.LENGTH_LONG).show();
                     goBack();
                 }
             }
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
         });
 
     }
+
 
 }

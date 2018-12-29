@@ -65,7 +65,10 @@ public class StoreScreenManager extends AppCompatActivity {
                     Product product = userSnapshot.getValue(Product.class);
                     Log.d(product.getName(), "BLA3");
                     arr_p.add(new Product(product.getName(),product.getPrice(),product.getPicture()));
+                    //arr_p.add(product);
                     Log.d(product.getPicture(), "BLA4");
+                    int id=R.drawable.black_coat;
+                    Log.d((" ID: "+id), "BLA4");
 
 
                     manager_listview.notifyDataSetChanged();
