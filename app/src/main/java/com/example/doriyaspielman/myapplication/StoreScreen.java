@@ -3,8 +3,8 @@ package com.example.doriyaspielman.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -12,11 +12,11 @@ import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -29,7 +29,7 @@ public class StoreScreen extends AppCompatActivity implements android.widget.Com
     private DatabaseReference db;
     Set<Integer> indexes = new HashSet<Integer>();
     private Integer position;
-    final ArrayList<Product> arr_p2 = new ArrayList();
+    final ArrayList<Product> arr_p = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,35 +37,23 @@ public class StoreScreen extends AppCompatActivity implements android.widget.Com
         setContentView(R.layout.activity_store_screen);
         db = FirebaseDatabase.getInstance().getReference();
         lst=(ListView) findViewById(R.id.listview);
-        final Custom_listview custom_listview=new Custom_listview(this,arr_p2);
+        final Custom_listview custom_listview=new Custom_listview(this,arr_p);
         lst.setAdapter(custom_listview);
         this.pay = (Button) findViewById(R.id.pay);
-
-        db.addChildEventListener(new ChildEventListener() {
-
+        DatabaseReference mFirebase = db.child("products");
+        mFirebase.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onChildAdded (@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                    //Log.d("BLA", "BLA2");
+
                     Product product = userSnapshot.getValue(Product.class);
-                    arr_p2.add(new Product(product.getName(),product.getPrice(),product.getPicture()));
+                    Log.d(product.getName(), "BLA3");
+                    arr_p.add(new Product(product.getName(),product.getPrice(),product.getPicture()));
+                    Log.d(product.getPicture(), "BLA2");
+
                     custom_listview.notifyDataSetChanged();
                 }
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
             }
 
             @Override
@@ -74,6 +62,9 @@ public class StoreScreen extends AppCompatActivity implements android.widget.Com
             }
 
         });
+
+
+
 
         pay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +103,7 @@ public class StoreScreen extends AppCompatActivity implements android.widget.Com
             indexes.remove(position);
         }
         if(pos != ListView.INVALID_POSITION){
-            Product p = arr_p2.get(pos);
+            Product p = arr_p.get(pos);
             p.setSelectes(isChecked);
             if(indexes.isEmpty()){
                 Toast.makeText(this, p.getName() + " remove! " , Toast.LENGTH_LONG).show();
