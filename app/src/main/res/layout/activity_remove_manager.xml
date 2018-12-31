@@ -3,6 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/backgroundshop"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -47,14 +49,15 @@
         android:layout_width="61dp"
         android:layout_height="59dp"
         android:layout_marginStart="164dp"
-        android:layout_marginTop="183dp"
+        android:layout_marginTop="150dp"
         android:layout_marginEnd="159dp"
         android:layout_marginBottom="36dp"
+        android:contentDescription="TODO"
+        android:onClick="ClickOnRemoveProduct"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idToRemove"
-        android:onClick="ClickOnRemoveProduct"
-        app:srcCompat="@android:drawable/ic_delete"
-        android:contentDescription="TODO" />
+        app:srcCompat="@android:drawable/ic_delete" />
 </android.support.constraint.ConstraintLayout>

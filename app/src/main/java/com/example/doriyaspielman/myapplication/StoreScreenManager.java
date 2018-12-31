@@ -3,7 +3,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -37,13 +36,9 @@ public class StoreScreenManager extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                    //Log.d("BLA", "BLA2");
 
                     Product product = userSnapshot.getValue(Product.class);
-                    Log.d(product.getName(), "BLA3");
                     arr_p.add(new Product(product.getName(),product.getPrice(),product.getPicture()));
-                    Log.d(product.getPicture(), "BLA2");
-
                     manager_listview.notifyDataSetChanged();
                 }
             }

@@ -1,10 +1,11 @@
 package com.example.doriyaspielman.myapplication;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -28,6 +29,8 @@ public class StoreScreen extends AppCompatActivity implements android.widget.Com
     ListView lst;
     private DatabaseReference db;
     Set<Integer> indexes = new HashSet<Integer>();
+    private  static Button button_sbm;
+
     private Integer position;
     final ArrayList<Product> arr_p = new ArrayList();
 
@@ -36,22 +39,18 @@ public class StoreScreen extends AppCompatActivity implements android.widget.Com
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_screen);
         db = FirebaseDatabase.getInstance().getReference();
-        lst=(ListView) findViewById(R.id.listview);
-        final Custom_listview custom_listview=new Custom_listview(this,arr_p);
+        lst = (ListView) findViewById(R.id.listview);
+        final Custom_listview custom_listview = new Custom_listview(this, arr_p);
         lst.setAdapter(custom_listview);
         this.pay = (Button) findViewById(R.id.pay);
+        button_sbm = (Button) findViewById(R.id.Alert);
         DatabaseReference mFirebase = db.child("products");
         mFirebase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                    //Log.d("BLA", "BLA2");
-
                     Product product = userSnapshot.getValue(Product.class);
-                    Log.d(product.getName(), "BLA3");
-                    arr_p.add(new Product(product.getName(),product.getPrice(),product.getPicture()));
-                    Log.d(product.getPicture(), "BLA2");
-
+                    arr_p.add(new Product(product.getName(), product.getPrice(), product.getPicture()));
                     custom_listview.notifyDataSetChanged();
                 }
             }
@@ -62,17 +61,36 @@ public class StoreScreen extends AppCompatActivity implements android.widget.Com
             }
 
         });
-
-
-
-
         pay.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                onPay();
-            }
+                public void onClick(View v) {
+                    AlertDialog.Builder a_builder = new AlertDialog.Builder(StoreScreen.this);
+                    a_builder.setMessage("Do you want to continue to payment? ")
+                            .setCancelable(false)
+                            .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    onPay();
+                                }
+                            })
+                            .setNegativeButton("No",new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            }) ;
+                    AlertDialog alert = a_builder.create();
+                  //  alert.setTitle("Alert !!!");
+                    alert.show();
+                }
         });
     }
+
+        public void onButtonClickListener() {
+
+
+        }
+
 
     public void onClickCheck(View v){
         CheckBox checkBox = (CheckBox)v;

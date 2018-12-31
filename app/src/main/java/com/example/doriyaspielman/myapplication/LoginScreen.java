@@ -32,11 +32,11 @@ public class LoginScreen extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickLoginButton();
+                onClickLoginButton( v);
             }
         });
     }
-    public void onClickLoginButton() {
+    public void onClickLoginButton(View v) {
         final String emailInputString = emailInput.getText().toString();
         final String passwordInputString = passowrdInput.getText().toString();
         final DatabaseReference db = FirebaseDatabase.getInstance().getReference();
