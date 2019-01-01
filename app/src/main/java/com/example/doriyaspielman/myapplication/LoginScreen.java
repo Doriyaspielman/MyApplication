@@ -20,7 +20,9 @@ public class LoginScreen extends AppCompatActivity {
     public Button signIn;
     private EditText emailInput;
     private EditText passowrdInput;
-    private boolean loginIsOk = false;
+    private boolean isClient = false;
+    private boolean isManager = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +42,14 @@ public class LoginScreen extends AppCompatActivity {
         final String emailInputString = emailInput.getText().toString();
         final String passwordInputString = passowrdInput.getText().toString();
         final DatabaseReference db = FirebaseDatabase.getInstance().getReference();
-        if( (emailInputString.equals("doriya@gmail.com") || emailInputString.equals("noyt@gmail.com")) && passwordInputString.equals("1234")) {//if manager
-            Intent i = new Intent(this, StoreScreenManager.class);
-            startActivity(i);
-        }
-        else if((emailInputString.toLowerCase().equals("doriya@gmail.com") || emailInputString.toLowerCase().equals("noyt@gmail.com")) && !passwordInputString.equals("1234")){
-            Toast.makeText(LoginScreen.this, "Wrong password,try again!", Toast.LENGTH_LONG).show();
-        }
-        else {
+//        if( (emailInputString.equals("doriya@gmail.com") || emailInputString.equals("noyt@gmail.com")) && passwordInputString.equals("1234")) {//if manager
+//            Intent i = new Intent(this, StoreScreenManager.class);
+//            startActivity(i);
+//        }
+//        if((emailInputString.toLowerCase().equals("doriya@gmail.com") || emailInputString.toLowerCase().equals("noyt@gmail.com")) && !passwordInputString.equals("1234")){
+//            Toast.makeText(LoginScreen.this, "Wrong password,try again!", Toast.LENGTH_LONG).show();
+//        }
+//        else {
             db.child("Users").child(emailInputString.replace(".", "|").toLowerCase()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -55,7 +57,12 @@ public class LoginScreen extends AppCompatActivity {
                         User user;
                         user = dataSnapshot.getValue(User.class);
                         if (passwordInputString.equals(user.getPassword())) {
-                            loginIsOk = true;
+                            if(user.isManager()){
+                                isManager=true;
+                            }
+                            else {
+                                isClient = true;
+                            }
                         }
                         else{
                             Toast.makeText(LoginScreen.this, "Wrong password,try again!", Toast.LENGTH_LONG).show();
@@ -67,11 +74,15 @@ public class LoginScreen extends AppCompatActivity {
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                 }
             });
-            if (loginIsOk) {//if user exists
+            if (isClient) {//if user exists
                 Intent i = new Intent(this, StoreScreen.class);
                 startActivity(i);
             }
-        }
+             if(isManager){
+                Intent i = new Intent(this, StoreScreenManager.class);
+                startActivity(i);
+            }
+
     }
 
     public void OnClickSignInButton(View v) {//new user,need to sintup

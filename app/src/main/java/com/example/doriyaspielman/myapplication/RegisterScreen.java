@@ -49,8 +49,7 @@ public class RegisterScreen extends AppCompatActivity {
         final User user = new User(
                 nameInput.getText().toString(),
                 emailInput.getText().toString(),
-                passwordInput.getText().toString(),
-                false);
+                passwordInput.getText().toString(), false);
 
         if ((HasEmptyFields() == false)) {
 
