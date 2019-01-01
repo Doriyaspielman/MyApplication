@@ -38,17 +38,18 @@
         android:id="@+id/plus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="63dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="281dp"
-        android:layout_marginBottom="9dp"
+        android:layout_marginBottom="2dp"
         android:clickable="true"
-        app:backgroundTint="@color/common_google_signin_btn_text_dark_default"
+        android:onClick="OnClickPlus"
+        app:backgroundTint="@color/common_google_signin_btn_text_light_disabled"
         app:layout_constraintBottom_toTopOf="@+id/listviewmanager"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.934"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:onClick="OnClickPlus"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/plus" />
 
     <android.support.design.widget.FloatingActionButton
@@ -58,14 +59,16 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginBottom="9dp"
+        android:layout_marginBottom="2dp"
         android:clickable="true"
-        app:backgroundTint="@color/common_google_signin_btn_text_dark_default"
+        android:onClick="OnClickMinos"
+        app:backgroundTint="@color/common_google_signin_btn_text_light_disabled"
         app:layout_constraintBottom_toTopOf="@+id/listviewmanager"
         app:layout_constraintEnd_toStartOf="@+id/plus"
+        app:layout_constraintHorizontal_bias="0.984"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:onClick="OnClickMinos"
-        app:srcCompat="@drawable/minos" />
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/min" />
 
 </android.support.constraint.ConstraintLayout>
